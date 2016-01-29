@@ -1,0 +1,12 @@
+<h2>Editing reservation</h2>
+<p>Reservation status: 
+  <%= @reservation.status %>
+</p>
+
+<% if @event.available_seats? %>
+  <%= render partial: 'braintree_form', locals: {submit_type: "Create Reservation"} %>
+<% else %>
+  <p>Sorry, the spot has been taken. We will email you if there is another opening.</p>
+<% end %>
+
+<%= link_to 'Your user page', user_path(@user) %>

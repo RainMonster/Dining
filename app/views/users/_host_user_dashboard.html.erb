@@ -1,0 +1,2 @@
+    Signed in as <strong><%= current_user.first_name %></strong>!
+    <%= link_to "Your Reservations Page", user_path(current_user) %> | <%= link_to 'Your Account Settings', edit_user_path(@user) %> |<%= link_to "Browse Upcoming Events", events_path %> | <%= link_to "Create New Event", new_event_path %> | <%= link_to "Sign Out", signout_path, id: "sign_out" %>

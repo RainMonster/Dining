@@ -1,0 +1,16 @@
+<h2>Sign Up</h2>
+<%= link_to "Sign up with Facebook", "/auth/facebook", id: "sign_in" %>
+<br>
+or
+<br>
+<%= link_to "Sign up with Email", new_user_path, id: "sign_in_regular" %>
+<br>
+<h3>Already a Dining member?</h3>
+Log in with email:
+<%= form_for :session, :url => sessions_path do |f| %>
+  <%= f.text_field :email, placeholder: "email" %>
+  <%= f.password_field :password, placeholder: "password" %>
+  <%= f.submit "Log in" %>
+<% end %>
+<br>
+<%= link_to "Log in with Facebook", "/auth/facebook", id: "log_in" %>

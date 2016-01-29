@@ -1,0 +1,14 @@
+<h1>New reservation</h1>
+
+<% if @event.available_seats? %>
+  <h1>Braintree Credit Card Transaction Form</h1>
+  <strong>Non-refundable RSVP cost:</strong> $<%= @event.display_amount %><br />
+  <% if @user.has_stored_card? %>
+    <%= render partial: 'credit_cards/select_stored_card', locals: {submit_type: "Create Reservation"} %>
+  <% end %>
+  <%= render partial: 'braintree_form', locals: {submit_type: "Create Reservation"} %>
+<% else %>
+  <%= render partial: 'waiting_list_form', locals: {submit_type: "Join Waiting List"}%>
+<% end %>
+
+<%= link_to 'Event page', event_path(@event) %>

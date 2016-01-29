@@ -1,0 +1,12 @@
+<div id="braintree_form">
+  <% if current_user.has_stored_card? %>
+    <p>Your default credit card is <%= @card.to_s %></p>
+    <%= link_to "Delete your current default credit card", [@user, @card], method: :delete %>
+  <% else %>
+    <%= render partial: 'braintree_customer_form' %>
+  <% end %>
+</div>
+<div id="mailing_form">
+  <%= render partial: 'mail_chimp_form' %>
+</div>
+<%= link_to "Return to your page", user_path(@user) %>

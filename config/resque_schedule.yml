@@ -1,0 +1,5 @@
+events_time_queue:
+  every: 300s
+  class: EventsJob
+  args:
+  description: Updates past_events

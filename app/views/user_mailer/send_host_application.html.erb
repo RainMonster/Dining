@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>New Host Application:</h3>
+
+    First name: <%= @message['first_name'] %><br />
+    Last name: <%= @message['last_name'] %><br />
+    Phone number: <%= @message['phone_number'] %><br />
+    Why are you interested in becoming a dining host?<br />
+    <%= @message['question_1'] %><br />
+    Do you have some favorite cuisines? If so, which are they?<br />
+    <%= @message['question_2'] %><br />
+    Please name your 3 favorite restaurants in the world:<br />
+    <%= @message['question_3'] %><br />
+    Are you affiliated with other dining groups or dining websites? If so, which ones?<br />
+    <%= @message['question_4'] %><br />
+    Do you have a food blog or social media page dedicated to your food experiences? If so, please share the link(s):<br />
+    <%= @message['question_5'] %><br />
+    User id: <%= @user[:id] %><br />
+    User email: <%= @user[:email] %>
+  </body>
+</html>

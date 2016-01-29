@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dining</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div id="user_nav">
+    <% if current_user %>
+      <% if current_user.host? %>
+        <%= render partial: 'users/host_user_dashboard', locals: {user: current_user} %>
+      <% else %>
+        <%= render partial: 'users/regular_user_dashboard', locals: {user: current_user} %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id='notice'>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

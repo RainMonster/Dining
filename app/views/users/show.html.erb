@@ -1,0 +1,34 @@
+<div id='upcoming_reserved_events'>
+<h3>Your upcoming resevations: </h3>
+  <% if @reserved_events %>
+    <% @reserved_events[:reservations].each do |r| %>
+      <%= link_to "#{r.event.restaurant_name}, #{r.event.event_time}", event_path(r.event) %> | <%= link_to 'Delete', [r.event, r], method: :delete, data: { confirm: 'Are you sure?' } %><br />
+    <% end %>
+  <% else %>
+    <p>There are currently no upcoming reservations.</p>
+  <% end %>
+</div>
+
+<div id='waiting_list_events'>
+  <% if @waiting_list_events %>
+    <h4>Events for which you are on the waiting list: </h4>
+    <% @waiting_list_events[:reservations].each do |r| %>
+      <%= link_to "#{r.event.restaurant_name}, #{r.event.event_time}", event_path(r.event) %> | <%= link_to 'Delete', [r.event, r], method: :delete, data: { confirm: 'Are you sure?' } %><br />
+      <% if r.event.available_seats? %>
+        <p>There are now seats available for <%= r.event.restaurant_name %>! | 
+        <%= link_to "Click here to update your reservation", edit_event_reservation_path(r.event, r) %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div id='past_events'>
+  <% if @past_reserved_events %>
+    <h4>Your previous events:</h4>
+    <% @past_reserved_events[:events].each do |event| %>
+      <%= link_to "#{event.restaurant_name}, #{event.event_time}", event_path(event) %><br />
+    <% end %>
+  <% end %>
+</div>
+
+<br />

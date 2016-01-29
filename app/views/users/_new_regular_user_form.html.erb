@@ -1,0 +1,32 @@
+<h2> Create an Account </h2>
+<%= form_for @user, url: (@user.new_record? ? users_path : user_path(@user)) do |f| %>
+  <% if @user.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+  </div>
+  <% end %>
+  <%= f.label "First Name" %>
+  <%= f.text_field :first_name %>
+  <%= @user.errors[:first_name].join(', ') %>
+  <br>
+  <%= f.label "Last Name" %>
+  <%= f.text_field :last_name %>
+  <%= @user.errors[:last_name].join(', ') %>
+  <br>
+  <%= f.label "Email" %>
+  <%= f.text_field :email %>
+  <%= @user.errors[:email].join(', ') %>
+  <br>
+  <%= f.label "Password" %>
+  <%= f.password_field :password %>
+  <%= @user.errors[:password].join(', ') %>
+  <br>
+  <%= f.label "Password Confirmation" %>
+  <%= f.password_field :password_confirmation %>
+  <%= @user.errors[:password_confirmation].join(', ') %>
+  <br>
+  <%= f.label "Subscribe to our mailing list" %>
+  <%= f.check_box :email_subscriber %>
+  <br>
+  <%= f.submit "Sign Up!" %>
+<%end%>

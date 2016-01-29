@@ -1,0 +1,30 @@
+<div>
+  <%= form_for([@event, @reservation], html: {id: 'braintree-payment-form-2'}) do |f| %>
+    <p>
+      <input type="hidden" size"10" autocomplete="off" data-encrypted-name="amount" value=<%=@event.amount%> >
+    </p>
+    <p>
+      <label>Card Number</label>
+      <input type="text" size="20" autocomplete="off" data-encrypted-name="number" />
+    </p>
+    <p>
+      <label>CVV</label>
+      <input type="text" size="4" autocomplete="off" data-encrypted-name="cvv" />
+    </p>
+    <p>
+      <label>Expiration (MM/YYYY)</label>
+      <input type="text" size="2" name="month" /> / <input type="text" size="4" name="year" />
+    </p>
+    <%= hidden_field_tag('reservation[user_id]', current_user.id) %>
+    <%= hidden_field_tag('reservation[event_id]', @event.id) %>
+    <%= f.submit value= submit_type %>
+  <% end %>
+</div>
+<script src="https://js.braintreegateway.com/v1/braintree.js"></script>
+<script>
+  var braintree = Braintree.create("MIIBCgKCAQEAskeROt3XnD4poS2GWhmrMqTjYWnR/PUkdYn7xJ0YcCQaPSu1Sjt1O4rHjWaP9d7QUif8WI4pSQte+3f+o0M9Haq4iq1OsPwWFUx5IXkNUNtUDpBwdXYuWqzcKwQfsGTmYB5ECJI5PNLlmElXFyaN2TSpK4Hey6m8Il8ZGrPlKqrZWkXkPzV/oRR/RRkbMl70ZNj6tJHOG+NSb5wamn/saBw6Nj8p6798YAFdFzEBs03Fgc/vGaASCY6EhGY5bbIg506mafSPB11Gsc6rB/ttW4nQeqenstiygsQtESwGTv9RHmF0Liw/JM7b/UReYXFl0XogqL1kSw32hmwM+gZp8QIDAQAB");
+  braintree.onSubmitEncryptForm('braintree-payment-form-2');
+</script>
+  <% if Rails.env.development? %>
+    <p>4111111111111111</p>
+  <% end %>

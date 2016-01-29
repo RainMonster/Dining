@@ -1,0 +1,25 @@
+<h2>host application</h2>
+<div id="host_application">
+  <%= form_tag("/send_host_application", method: "post", name: "message") do %>
+    <%= label_tag(:first_name, "First Name: ") %>
+    <%= text_field_tag("message[first_name]", @user.first_name) %>
+    <%= label_tag(:last_name, "Last Name: ") %>
+    <%= text_field_tag("message[last_name]", @user.last_name) %>
+    <%= label_tag(:phone_number, "Phone Number: ") %>
+    <%= text_field_tag("message[phone_number]") %></p>
+    <p>Why are you interested in becoming a dining host?<br />
+    <%= text_area_tag("message[question_1]", "", size: "90x3") %><br />
+    <p>Do you have some favorite cuisines? If so, which are they?</p>
+    <%= text_area_tag("message[question_2]", "", size: "90x3") %><br />
+    <p>Please name your 3 favorite restaurants in the world:</p>
+    <%= text_area_tag("message[question_3]", "", size: "90x3") %><br />
+    <p>Are you affiliated with other dining groups or dining websites? If so, which ones?</p>
+    <%= text_area_tag("message[question_4]", "", size: "90x3") %><br />
+    <p>Do you have a food blog or social media page dedicated to your food experiences? If so, please share the link(s):</p>
+    <%= text_area_tag("message[question_5]", "", size: "90x3") %><br />
+    <%= check_box("message", "terms") %> I have read <%= link_to "Dining's Terms and Conditions", terms_and_conditions_path %><br />
+    <%= submit_tag("Submit application") %>
+  <% end %>
+</div>
+
+<%= link_to "Return to your page", user_path(@user) %>

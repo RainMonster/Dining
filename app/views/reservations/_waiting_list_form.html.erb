@@ -1,0 +1,20 @@
+<h3>Click here to be added to the waiting list for this event.</h3>
+  <p>If a seat opens up you will receive an email notification.</p>
+  <%= form_for([@event, @reservation]) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= hidden_field_tag(:waiting_list, "Waiting list reservation") %>
+  <%= hidden_field_tag('reservation[user_id]', current_user.id) %>
+  <%= hidden_field_tag('reservation[event_id]', @event.id) %>
+  <%= f.submit value= submit_type %>
+<% end %>
+

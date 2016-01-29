@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        <p>There is an opening for <%= @event.restaurant_name %></p>
+        <p>It's first come first serve, so hurry and make your RSVP for <%= @event.restaurant_name%> now!</p>     
+        <a href="<%= prepend_root_url + edit_event_reservation_path(@event, @reservation) %>">Click here to RSVP: <%= @event.restaurant_name %></a>  
+    </body>
+</html>
